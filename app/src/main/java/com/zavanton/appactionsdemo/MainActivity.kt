@@ -1,15 +1,28 @@
 package com.zavanton.appactionsdemo
 
+import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import com.zavanton.appactionsdemo.features.AccountListFragment
+import com.zavanton.appactionsdemo.features.CardListFragment
 
 class MainActivity : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        Log.d("zavanton", "zavanton - intent.action: ${intent.action}")
-        Log.d("zavanton", "zavanton - intent.data: ${intent.data}")
+        if (intent.action == Intent.ACTION_VIEW) {
+            val fragment = when {
+                intent.data?.path == Deeplink.CARD_LIST -> CardListFragment.newInstance()
+                intent.data?.path == Deeplink.ACCOUNT_LIST -> AccountListFragment.newInstance()
+                else -> CardListFragment.newInstance()
+            }
+            if (supportFragmentManager.findFragmentById(R.id.fragment_container) == null) {
+                supportFragmentManager.beginTransaction()
+                    .add(R.id.fragment_container, fragment)
+                    .commit()
+            }
+        }
     }
 }
