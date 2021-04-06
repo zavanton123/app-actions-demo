@@ -1,14 +1,25 @@
-<?xml version ="1.0" encoding ="utf-8"?><!--  Learn More about how to use App Actions: https://developer.android.com/guide/actions/index.html -->
+<?xml version ="1.0" encoding ="utf-8"?>
 <actions>
-    <!--    Example Action -->
-    <!--    <action intentName="Intent name (actions.intent.*)"> -->
-    <!--        <action-display -->
-    <!--            icon="@mipmap/..." -->
-    <!--            labelTemplate="@array/..." /> -->
-    <!--        <fulfillment urlTemplate="Action content URI or URL"> -->
-    <!--            <parameter-mapping -->
-    <!--                intentParameter="Parameter name in Intent URI" -->
-    <!--                urlParameter="Parameter name in URL" /> -->
-    <!--        </fulfillment> -->
-    <!--    </action> -->
+    <action intentName="actions.intent.OPEN_APP_FEATURE">
+        <fulfillment
+            fulfillmentMode="actions.fulfillment.DEEPLINK"
+            urlTemplate="{@url}" />
+
+        <parameter name="feature">
+            <entity-set-reference entitySetId="my_app_feature" />
+        </parameter>
+
+        <fulfillment
+            fulfillmentMode="actions.fulfillment.DEEPLINK"
+            urlTemplate="https://zavanton.com/home" />
+    </action>
+
+    <entity-set entitySetId="my_app_feature">
+        <entity
+            name="cards"
+            url="https://zavanton.com/card-list" />
+        <entity
+            name="accounts"
+            url="https://zavanton.com/account-list" />
+    </entity-set>
 </actions>
