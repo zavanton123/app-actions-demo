@@ -2,11 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.zavanton.appactionsdemo">
 
-    <!--    enable App Actions -->
-    <meta-data
-        android:name="com.google.android.actions"
-        android:resource="@xml/actions" />
-
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -14,6 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppActionsDemo">
+        <meta-data
+            android:name="com.google.android.actions"
+            android:resource="@xml/actions" />
 
         <activity android:name=".MainActivity">
             <intent-filter>
@@ -22,7 +20,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
 
-            <!--    deep link to open card list feature -->
+            <!-- deep link to open card list feature -->
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
 
@@ -35,7 +33,7 @@
                     android:scheme="https" />
             </intent-filter>
 
-            <!--    deep link to open account list feature -->
+            <!-- deep link to open account list feature -->
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
 
@@ -48,7 +46,7 @@
                     android:scheme="https" />
             </intent-filter>
 
-            <!--    deep link to open home feature -->
+            <!-- deep link to open home feature -->
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
 
@@ -61,6 +59,7 @@
                     android:scheme="https" />
             </intent-filter>
         </activity>
+
 
 
     </application>

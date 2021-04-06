@@ -6,7 +6,7 @@
             urlTemplate="{@url}" />
 
         <parameter name="feature">
-            <entity-set-reference entitySetId="my_app_feature" />
+            <entity-set-reference entitySetId="myappfeature" />
         </parameter>
 
         <fulfillment
@@ -14,7 +14,7 @@
             urlTemplate="https://zavanton.com/home" />
     </action>
 
-    <entity-set entitySetId="my_app_feature">
+    <entity-set entitySetId="myappfeature">
         <entity
             name="cards"
             url="https://zavanton.com/card-list" />
