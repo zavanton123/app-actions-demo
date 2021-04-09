@@ -9,6 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppActionsDemo">
+
+        <!--   set up actions     -->
         <meta-data
             android:name="com.google.android.actions"
             android:resource="@xml/actions" />
@@ -20,18 +22,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
 
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE" />
-
-                <data
-                    android:host="zavanton.com"
-                    android:pathPattern="/search?query=*"
-                    android:scheme="https" />
-            </intent-filter>
-
+            <!--    deep links        -->
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
 
@@ -42,10 +33,7 @@
                     android:host="zavanton.com"
                     android:scheme="https" />
             </intent-filter>
-
-
         </activity>
 
     </application>
-
 </manifest>

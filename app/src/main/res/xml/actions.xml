@@ -1,7 +1,7 @@
 <?xml version ="1.0" encoding ="utf-8"?>
 <actions>
     <action intentName="actions.intent.OPEN_APP_FEATURE">
-        <!-- this is a fulfillment for specific features -->
+        <!-- the fulfillment for specific features -->
         <fulfillment
             fulfillmentMode="actions.fulfillment.DEEPLINK"
             urlTemplate="{@url}" />
@@ -10,7 +10,7 @@
             <entity-set-reference entitySetId="myappfeature" />
         </parameter>
 
-        <!-- this is a fallback default fulfillment -->
+        <!-- the fallback fulfillment -->
         <fulfillment
             fulfillmentMode="actions.fulfillment.DEEPLINK"
             urlTemplate="https://zavanton.com/home" />
