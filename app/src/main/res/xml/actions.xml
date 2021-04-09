@@ -1,5 +1,19 @@
 <?xml version ="1.0" encoding ="utf-8"?>
 <actions>
+    <!--    Examples: -->
+    <!--    "Find waterfall hikes on ExampleApp" -->
+    <!--    "Look up summer dresses in ExampleApp" -->
+    <action intentName="actions.intent.GET_THING">
+        <fulfillment urlTemplate="https://zavanton.com/search{?query}">
+            <parameter-mapping
+                intentParameter="thing.name"
+                urlParameter="query" />
+        </fulfillment>
+    </action>
+
+    <!--    Examples: -->
+    <!--    "Show me cards on ExampleApp" -->
+    <!--    "Open accounts in ExampleApp" -->
     <action intentName="actions.intent.OPEN_APP_FEATURE">
         <!-- the fulfillment for specific features -->
         <fulfillment

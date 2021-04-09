@@ -9,3 +9,7 @@ object Deeplink {
 object Actions {
     const val ACTION_TOKEN_EXTRA = "actions.fulfillment.extra.ACTION_TOKEN"
 }
+
+object Params {
+    const val QUERY = "query"
+}

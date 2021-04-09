@@ -45,7 +45,10 @@ class MainActivity : AppCompatActivity() {
         when (intent.data?.path) {
             Deeplink.CARD_LIST -> startFragment(CardListFragment.newInstance())
             Deeplink.ACCOUNT_LIST -> startFragment(AccountListFragment.newInstance())
-            Deeplink.SEARCH -> startFragment(SearchFragment.newInstance())
+            Deeplink.SEARCH -> {
+                val searchQuery = intent.data?.getQueryParameter(Params.QUERY).orEmpty()
+                startFragment(SearchFragment.newInstance(searchQuery))
+            }
             else -> {
                 startFragment(HomeFragment.newInstance())
                 isActionHandled = false
