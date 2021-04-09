@@ -11,7 +11,6 @@
         </fulfillment>
     </action>
 
-
     <!--    Examples:
     Send money on ExampleProvider.
     Transfer money from my savings account to my checking account on ExampleProvider.
@@ -28,8 +27,7 @@
     Add money to my checking account on ExampleProvider so the balance is $150
     -->
     <action intentName="actions.intent.CREATE_MONEY_TRANSFER">
-        <fulfillment
-            urlTemplate="https://zavanton.com/payment{?transferMode,value,currency,moneyTransferOriginName,moneyTransferDestinationName,moneyTransferOriginProvidername,moneyTransferDestinationProvidername}">
+        <fulfillment urlTemplate="https://zavanton.com/payment{?transferMode,value,currency,moneyTransferOriginName,moneyTransferDestinationName,moneyTransferOriginProvidername,moneyTransferDestinationProvidername}">
             <!-- Eg. transferMode = "http://schema.googleapis.com/ReceiveMoney" -->
             <!-- (Optional) Require a field eg.transferMode for fulfillment with required="true" -->
             <parameter-mapping
@@ -93,4 +91,27 @@
             name="accounts"
             url="https://zavanton.com/account-list" />
     </entity-set>
+
+    <!--    App Action with slice fulfillment -->
+    <action intentName="actions.intent.GET_ACCOUNT">
+        <fulfillment
+            fulfillmentMode="actions.fulfillment.SLICE"
+            urlTemplate="content://com.zavanton.slices.account.provider{?accountName,description,providerName}">
+            <parameter-mapping
+                intentParameter="account.name"
+                required="true"
+                urlParameter="accountName" />
+            <parameter-mapping
+                intentParameter="account.description"
+                urlParameter="description" />
+            <parameter-mapping
+                intentParameter="account.provider.name"
+                urlParameter="providerName" />
+        </fulfillment>
+
+        <!-- the fallback fulfillment -->
+        <fulfillment
+            fulfillmentMode="actions.fulfillment.DEEPLINK"
+            urlTemplate="https://zavanton.com/home" />
+    </action>
 </actions>

@@ -52,4 +52,7 @@ dependencies {
     // Firebase
     implementation 'com.google.firebase:firebase-core:17.2.1'
     implementation 'com.google.firebase:firebase-appindexing:19.0.0'
+
+    // AppActions and Slices
+    implementation "androidx.slice:slice-builders-ktx:1.0.0-alpha6"
 }

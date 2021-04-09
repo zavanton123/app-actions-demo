@@ -35,8 +35,6 @@ class MainActivity : AppCompatActivity() {
 
     private fun handleDeepLink(intent: Intent) {
         Log.d("zavanton", "zavanton - intent.data: ${intent.data}")
-        Log.d("zavanton", "zavanton - intent.data?.path: ${intent.data?.path}")
-
         var isActionHandled = true
 
         when (intent.data?.path) {
@@ -47,7 +45,6 @@ class MainActivity : AppCompatActivity() {
                 startFragment(SearchFragment.newInstance(searchQuery))
             }
             Deeplink.PAYMENT -> {
-                Log.d("zavanton", "zavanton - payment data: ${intent.data}")
                 val transferMode = intent.data?.getQueryParameter(Params.TRANSFER_MODE).orEmpty()
                 val transferValue = intent.data?.getQueryParameter(Params.TRANSFER_VALUE).orEmpty()
                 val transferCurrency = intent.data?.getQueryParameter(Params.TRANSFER_CURRENCY).orEmpty()
@@ -81,8 +78,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun notifyGoogleAssistant(isActionHandled: Boolean) {
-        Log.d("zavanton", "zavanton - notifyGoogleAssistant: $isActionHandled")
-
         intent.getStringExtra(Actions.ACTION_TOKEN_EXTRA)?.let { actionToken ->
             val actionStatus = if (isActionHandled) {
                 Action.Builder.STATUS_TYPE_COMPLETED

@@ -3,6 +3,7 @@
     package="com.zavanton.appactionsdemo">
 
     <application
+        android:name="com.zavanton.appactionsdemo.app.App"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -34,6 +35,19 @@
                     android:scheme="https" />
             </intent-filter>
         </activity>
+
+        <!-- Define your SliceProvider -->
+        <!-- This authority is used as urlTemplate for app actions with Slices -->
+        <!-- And to grant access to SliceManager, see grantAssistantPermissions in App class -->
+        <provider
+            android:name=".slices.AccountInfoProvider"
+            android:authorities="com.zavanton.slices.account.provider"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.app.slice.category.SLICE" />
+            </intent-filter>
+        </provider>
 
     </application>
 </manifest>
