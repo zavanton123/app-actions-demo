@@ -8,10 +8,7 @@ import androidx.fragment.app.Fragment
 import com.google.firebase.appindexing.Action
 import com.google.firebase.appindexing.FirebaseUserActions
 import com.google.firebase.appindexing.builders.AssistActionBuilder
-import com.zavanton.appactionsdemo.features.AccountListFragment
-import com.zavanton.appactionsdemo.features.CardListFragment
-import com.zavanton.appactionsdemo.features.HomeFragment
-import com.zavanton.appactionsdemo.features.SearchFragment
+import com.zavanton.appactionsdemo.features.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -48,6 +45,24 @@ class MainActivity : AppCompatActivity() {
             Deeplink.SEARCH -> {
                 val searchQuery = intent.data?.getQueryParameter(Params.QUERY).orEmpty()
                 startFragment(SearchFragment.newInstance(searchQuery))
+            }
+            Deeplink.PAYMENT -> {
+                Log.d("zavanton", "zavanton - payment data: ${intent.data}")
+                val transferMode = intent.data?.getQueryParameter(Params.TRANSFER_MODE).orEmpty()
+                val transferValue = intent.data?.getQueryParameter(Params.TRANSFER_VALUE).orEmpty()
+                val transferCurrency = intent.data?.getQueryParameter(Params.TRANSFER_CURRENCY).orEmpty()
+                val transferOrigin = intent.data?.getQueryParameter(Params.TRANSFER_ORIGIN).orEmpty()
+                val transferDestination = intent.data?.getQueryParameter(Params.TRANSFER_DESTINATION).orEmpty()
+                val transferOriginProvider = intent.data?.getQueryParameter(Params.TRANSFER_ORIGIN_PROVIDER).orEmpty()
+                val transferDestinationProvider = intent.data?.getQueryParameter(Params.TRANSFER_DESTINATION_PROVIDER).orEmpty()
+
+                startFragment(
+                    PaymentFragment.newInstance(
+                        transferMode, transferValue,
+                        transferCurrency, transferOrigin,
+                        transferDestination, transferOriginProvider, transferDestinationProvider
+                    )
+                )
             }
             else -> {
                 startFragment(HomeFragment.newInstance())
