@@ -1,5 +1,16 @@
 <?xml version ="1.0" encoding ="utf-8"?>
 <actions>
+
+    <!--  Examples:
+    Get ExampleProvider bill.
+    ExampleProvider June credit card bill.
+    Show me my current bill using ExampleProvider.
+    Open up my mortgage statement using ExampleProvider.
+      -->
+    <action intentName="actions.intent.GET_INVOICE">
+        <fulfillment urlTemplate="https://zavanton.com/invoice" />
+    </action>
+
     <!--    Examples: -->
     <!--    "Find waterfall hikes on ExampleApp" -->
     <!--    "Look up summer dresses in ExampleApp" -->

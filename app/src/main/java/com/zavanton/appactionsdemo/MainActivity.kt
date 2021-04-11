@@ -38,6 +38,7 @@ class MainActivity : AppCompatActivity() {
         var isActionHandled = true
 
         when (intent.data?.path) {
+            Deeplink.INVOICE -> startFragment(InvoiceFragment.newInstance())
             Deeplink.CARD_LIST -> startFragment(CardListFragment.newInstance())
             Deeplink.ACCOUNT_LIST -> startFragment(AccountListFragment.newInstance())
             Deeplink.SEARCH -> {
