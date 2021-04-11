@@ -62,6 +62,10 @@ class MainActivity : AppCompatActivity() {
                     )
                 )
             }
+            Deeplink.FINANCIAL_SERVICES -> {
+                val serviceName = intent.data?.getQueryParameter(Params.SERVICE_NAME).orEmpty()
+                startFragment(CustomFragment.newInstance(serviceName))
+            }
             else -> {
                 startFragment(HomeFragment.newInstance())
                 isActionHandled = false

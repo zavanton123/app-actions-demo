@@ -6,6 +6,7 @@ object Deeplink {
     const val ACCOUNT_LIST = "/account-list"
     const val SEARCH = "/search"
     const val PAYMENT = "/payment"
+    const val FINANCIAL_SERVICES = "/services"
 }
 
 object Actions {
@@ -22,4 +23,6 @@ object Params {
     const val TRANSFER_DESTINATION = "moneyTransferDestinationName"
     const val TRANSFER_ORIGIN_PROVIDER = "moneyTransferOriginProvidername"
     const val TRANSFER_DESTINATION_PROVIDER = "moneyTransferDestinationProvidername"
+
+    const val SERVICE_NAME = "service"
 }

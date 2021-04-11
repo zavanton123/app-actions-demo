@@ -1,7 +1,8 @@
 <?xml version ="1.0" encoding ="utf-8"?>
 <actions>
 
-    <!--  Examples:
+    <!--    Hello world -->
+    <!--  Example commands:
     Get ExampleProvider bill.
     ExampleProvider June credit card bill.
     Show me my current bill using ExampleProvider.
@@ -11,7 +12,9 @@
         <fulfillment urlTemplate="https://zavanton.com/invoice" />
     </action>
 
-    <!--    Examples: -->
+
+    <!--    Parse some parameters from command -->
+    <!--    Example commands: -->
     <!--    "Find waterfall hikes on ExampleApp" -->
     <!--    "Look up summer dresses in ExampleApp" -->
     <action intentName="actions.intent.GET_THING">
@@ -22,7 +25,9 @@
         </fulfillment>
     </action>
 
-    <!--    Examples:
+
+    <!--    Parse many params from command, use fallback fullfilment -->
+    <!--    Example commands:
     Send money on ExampleProvider.
     Transfer money from my savings account to my checking account on ExampleProvider.
     Pay John Doe $300.00 now on ExampleProvider.
@@ -40,7 +45,6 @@
     <action intentName="actions.intent.CREATE_MONEY_TRANSFER">
         <fulfillment urlTemplate="https://zavanton.com/payment{?transferMode,value,currency,moneyTransferOriginName,moneyTransferDestinationName,moneyTransferOriginProvidername,moneyTransferDestinationProvidername}">
             <!-- Eg. transferMode = "http://schema.googleapis.com/ReceiveMoney" -->
-            <!-- (Optional) Require a field eg.transferMode for fulfillment with required="true" -->
             <parameter-mapping
                 intentParameter="moneyTransfer.transferMode"
                 required="true"
@@ -75,7 +79,9 @@
         <fulfillment urlTemplate="https://zavanton.com/payment" />
     </action>
 
-    <!--    Examples: -->
+
+    <!--    Use entity set to map command params to urls -->
+    <!--    Example commands: -->
     <!--    "Show me cards on ExampleApp" -->
     <!--    "Open accounts in ExampleApp" -->
     <action intentName="actions.intent.OPEN_APP_FEATURE">
@@ -103,6 +109,7 @@
             url="https://zavanton.com/account-list" />
     </entity-set>
 
+
     <!--    App Action with slice fulfillment -->
     <action intentName="actions.intent.GET_ACCOUNT">
         <fulfillment
@@ -125,4 +132,25 @@
             fulfillmentMode="actions.fulfillment.DEEPLINK"
             urlTemplate="https://zavanton.com/home" />
     </action>
+
+
+    <!--    App action with custom intent  -->
+    <!--    Example commands
+        "Hey Google, open ExampleGameApp and subscribe me to someService"
+        "Hey Google, open ExampleGameApp and make a subscription to someService."
+        "Hey Google, start ExampleGameApp and enable service someService."
+    -->
+    <action
+        intentName="custom.actions.intent.SUBSCRIBE_TO_FINANCIAL_SERVICE"
+        queryPatterns="@array/subscribe_to_financial_services">
+        <parameter
+            name="service1"
+            type="https://schema.org/Text" />
+        <fulfillment urlTemplate="https://zavanton.com/services{?service}">
+            <parameter-mapping
+                intentParameter="service1"
+                urlParameter="service" />
+        </fulfillment>
+    </action>
+
 </actions>

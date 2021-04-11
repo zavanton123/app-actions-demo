@@ -9,4 +9,11 @@
     <string name="transfer_origin_provider">Transfer origin provider: %s</string>
     <string name="transfer_destination_provider">Transfer destination provider: %s</string>
     <string name="slice_enter_app_hint">Open App</string>
+    <string name="service_name">Service: %s</string>
+
+    <string-array name="subscribe_to_financial_services">
+        <item>subscribe me to $service1</item>
+        <item>make a subscription to $service1</item>
+        <item>enable service $service1</item>
+    </string-array>
 </resources>
